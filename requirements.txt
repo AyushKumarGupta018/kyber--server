@@ -1,5 +1,7 @@
-# requirements.txt - Fixed for Render.com
+# requirements.txt - Fixed for Real liboqs-python
 flask==3.0.3
 flask-cors==4.0.1
-oqs==0.10.2  # Official package name + latest version
 gunicorn==22.0.0
+# Install real liboqs-python from GitHub (avoids PyPI collision)
+# This clones, builds liboqs, and installs the bindings
+https://github.com/open-quantum-safe/liboqs-python/archive/refs/heads/main.zip#egg=oqs&subdirectory=src
