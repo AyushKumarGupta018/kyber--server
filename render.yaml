@@ -3,12 +3,16 @@ services:
     name: neighbour-nest-kyber
     env: python
     plan: free
+    autoDeploy: true
+
+    # THIS IS THE KEY LINE
     buildCommand: >-
       apt-get update && 
       apt-get install -y cmake build-essential libssl-dev && 
       pip install -r requirements.txt
+
     startCommand: gunicorn app:app --bind 0.0.0.0:$PORT
+
     envVars:
       - key: PYTHON_VERSION
-        value: 3.11.9
-    autoDeploy: true
+        value: 3.11.9   # liboqs-python loves 3.11, 3.13 is too new
