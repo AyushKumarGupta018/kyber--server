@@ -2,11 +2,15 @@ services:
   - type: web
     name: neighbour-nest-kyber
     env: python
+    region: oregon
     plan: free
     autoDeploy: true
 
-    # THIS LINE MUST BE EXACTLY LIKE THIS (no quotes, proper indentation)
-    buildCommand: apt-get update && apt-get install -y cmake build-essential libssl-dev && pip install -r requirements.txt
+    buildCommand: >-
+      apt-get update -y && 
+      apt-get install -y cmake build-essential libssl-dev git && 
+      pip install --upgrade pip && 
+      pip install -r requirements.txt
 
     startCommand: gunicorn app:app --bind 0.0.0.0:$PORT
 
