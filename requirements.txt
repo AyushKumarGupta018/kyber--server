@@ -1,7 +1,6 @@
-# requirements.txt - Fixed for Real liboqs-python
+# requirements.txt - Fixed Git Install (No Subdirectory)
 flask==3.0.3
 flask-cors==4.0.1
 gunicorn==22.0.0
-# Install real liboqs-python from GitHub (avoids PyPI collision)
-# This clones, builds liboqs, and installs the bindings
-https://github.com/open-quantum-safe/liboqs-python/archive/refs/heads/main.zip#egg=oqs&subdirectory=src
+# Install real liboqs-python from GitHub source (root dir has build files)
+https://github.com/open-quantum-safe/liboqs-python/archive/refs/heads/main.zip#egg=oqs
