@@ -1,12 +1,14 @@
-# render.yaml - Fixed Python Version
 services:
   - type: web
     name: neighbour-nest-kyber
     env: python
-    buildCommand: pip install -r requirements.txt
+    plan: free
+    buildCommand: >-
+      apt-get update && 
+      apt-get install -y cmake build-essential libssl-dev && 
+      pip install -r requirements.txt
     startCommand: gunicorn app:app --bind 0.0.0.0:$PORT
     envVars:
       - key: PYTHON_VERSION
-        value: 3.11.9  # Stable for liboqs-python (avoids 3.13 issues)
-    plan: free
+        value: 3.11.9
     autoDeploy: true
